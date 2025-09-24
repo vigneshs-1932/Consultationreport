@@ -1,0 +1,158 @@
+{{ form.media }}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Consultation Report</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container my-5">
+    <div class="card shadow-lg p-4 rounded-3">
+        <h2 class="text-center mb-4">Consultation Report</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <!-- Clinic Name -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.clinic_name.id_for_label }}" class="form-label">Clinic Name</label>
+                    </div>
+                    <div class="col-6">
+                        {{ form.clinic_name }}
+                    </div>
+                    {% for error in form.clinic_name.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Clinic Logo -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.clinic_logo.id_for_label }}" class="form-label">Clinic Logo</label>
+                    </div>
+                    <div class="col-6">
+                        {{ form.clinic_logo }}
+                    </div>
+                    {% for error in form.clinic_logo.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Physician Name -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.physician_name.id_for_label }}" class="form-label">Physician Name</label>
+                    </div>
+                    <div class="col-6">
+                        {{ form.physician_name }}
+                    </div>
+                    {% for error in form.physician_name.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Physician Contact -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.physician_contact.id_for_label }}" class="form-label">Physician Contact</label>
+                    </div>
+                    <div class="col-6">
+                        {{ form.physician_contact }}
+                    </div>
+                    {% for error in form.physician_contact.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Patient First Name -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.patient_first_name.id_for_label }}" class="form-label">Patient First Name</label>
+                    </div>
+                    <div class="col-6">
+                        {{ form.patient_first_name }}
+                    </div>
+                    {% for error in form.patient_first_name.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Patient Last Name -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.patient_last_name.id_for_label }}" class="form-label">Patient Last Name</label>
+                    </div>
+                    <div class="col-6">
+                        {{ form.patient_last_name }}
+                    </div>
+                    {% for error in form.patient_last_name.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Patient Contact -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.patient_contact.id_for_label }}" class="form-label">Patient Contact</label>
+                    </div>
+                    <div class="col-6">
+                        {{ form.patient_contact }}
+                    </div>
+                    {% for error in form.patient_contact.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Patient DOB -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.patient_dob.id_for_label }}" class="form-label">Patient Date of Birth</label>
+                    </div>
+                    <div class="col-6">
+                        {{ form.patient_dob }}
+                    </div>
+                    {% for error in form.patient_dob.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Chief Complaint -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.chief_complaint.id_for_label }}" class="form-label">Chief Complaint</label>
+                    </div>
+                    <div class="col-12">
+                        {{ form.chief_complaint }}
+                    </div>
+                    {% for error in form.chief_complaint.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+
+                <!-- Consultation Note -->
+                <div class="mb-3 col-6 row">
+                    <div class="col-6">
+                        <label for="{{ form.consultation_note.id_for_label }}" class="form-label">Consultation Note</label>
+                    </div>
+                    <div class="col-12">
+                        {{ form.consultation_note }}
+                    </div>
+                    {% for error in form.consultation_note.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button type="submit" class="btn btn-primary">Generate Report</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->yes
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

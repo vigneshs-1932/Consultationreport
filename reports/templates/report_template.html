@@ -1,0 +1,142 @@
+{% load base64_filter %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 12pt;
+            margin: 1in;
+            padding: 0;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            max-height: 60px;
+            margin-bottom: 5px;
+        }
+
+        h2 {
+            margin: 5px 0;
+            font-size: 18pt;
+            color: #007BFF;
+        }
+
+        /* Info table */
+        table.info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table.info-table td {
+            padding: 6px 10px;
+            vertical-align: top;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table.info-table td.label {
+            font-weight: bold;
+            width: 150px;
+        }
+
+        /* Section styling */
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h3 {
+            background-color: #e8f0ff;
+            padding: 5px 10px;
+            margin: 0;
+            border-left: 5px solid #007BFF;
+            font-size: 14pt;
+        }
+
+        .section div {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-top: none;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            text-align: center;
+            font-size: 10pt;
+            border-top: 1px solid #ccc;
+            padding-top: 5px;
+            margin-top: 30px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        {% if clinic_logo %}
+            <img src="data:image/jpeg;base64,{{ clinic_logo|b64encode }}" height="60">
+        {% endif %}
+        <h1>{{ clinic_name }}</h1>
+    </div>
+
+    <!-- Patient & Physician Info -->
+    <table class="info-table">
+        <tr>
+            <td class="label">Physician Name:</td>
+            <td>{{ physician_name }}</td>
+        </tr>
+        <tr>
+            <td class="label">Physician Contact:</td>
+            <td>{{ physician_contact }}</td>
+        </tr>
+        <tr>
+            <td class="label">Patient Name:</td>
+            <td>{{ patient_first_name }} {{ patient_last_name }}</td>
+        </tr>
+        <tr>
+            <td class="label">Date of Birth:</td>
+            <td>{{ patient_dob }}</td>
+        </tr>
+        <tr>
+            <td class="label">Patient Contact:</td>
+            <td>{{ patient_contact }}</td>
+        </tr>
+    </table>
+
+    <!-- Chief Complaint -->
+    <div class="section">
+        <h3>Chief Complaint</h3>
+        <div>{{ chief_complaint|safe }}</div>
+    </div>
+
+    <!-- Consultation Note -->
+    <div class="section">
+        <h3>Consultation Note</h3>
+        <div>{{ consultation_note|safe }}</div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        This report is generated on {{ timestamp }} from {{ ip }}
+    </div>
+</div>
+
+</body>
+</html>
