@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-gdk$8h1o6$b(b+hnfe(9hb()9ekd!egw$p1*^56k=j=bk-%rti
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['consultationreport.onrender.com']
+ALLOWED_HOSTS = ['consultationreport.onrender.com','127.0.0.1']
 
 
 # Application definition
@@ -136,3 +137,13 @@ CKEDITOR_CONFIGS = {
         'width': '100%'
     }
 }
+
+STATIC_URL = '/static/'
+
+# Directory where collectstatic will put files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Optional: directories where your static files live
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
