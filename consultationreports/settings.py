@@ -131,12 +131,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': [
-            ['Bold', 'Italic', 'Undo', 'Redo'],
-            ['NumberedList', 'BulletedList'],
-            ['JustifyLeft', 'JustifyCenter', 'JustifyRight'],
+            ['Undo', 'Redo','formats','Bold', 'Italic'],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['BulletedList','NumberedList'],
+            ['decreaseIndent','increaseIndent'],
         ],
         'height': 200,
-        'width': '100%'
+        'width': '150%'
     }
 }
 
