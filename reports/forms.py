@@ -2,7 +2,6 @@ from django import forms
 from ckeditor.widgets import CKEditorWidget
 from django.core.exceptions import ValidationError
 from datetime import date
-import imghdr
 
 class ConsultationForm(forms.Form):
     clinic_name = forms.CharField(
