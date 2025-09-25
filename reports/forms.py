@@ -108,9 +108,6 @@ class ConsultationForm(forms.Form):
             main, sub = image.content_type.split('/')
             if main != 'image':
                 raise ValidationError('Uploaded file must be an image.')
-            # Optional: validate image type further
-            if imghdr.what(image) not in ['jpeg', 'png', 'gif']:
-                raise ValidationError('Image must be JPEG, PNG, or GIF format.')
         else:
             raise ValidationError('This field is required.')
         return image
