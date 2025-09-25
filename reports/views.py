@@ -12,7 +12,6 @@ import base64
 
 
 def generate_pdf(template_src, context_dict, filename):
-    print(context_dict)
     """Generate PDF from template and context."""
     template = get_template(template_src)
     html = template.render(context_dict)
