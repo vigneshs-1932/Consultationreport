@@ -103,10 +103,20 @@ class ConsultationForm(forms.Form):
 
     def clean_clinic_logo(self):
         image = self.cleaned_data.get('clinic_logo')
-        if image:
-            main, sub = image.content_type.split('/')
-            if main != 'image':
-                raise ValidationError('Uploaded file must be an image.')
-        else:
-            raise ValidationError('This field is required.')
+
+        if not image:
+            raise ValidationError('Clinic logo is required.')
+
+        if not image.content_type.startswith('image/'):
+            raise ValidationError('Uploaded file must be an image.')
+
+        allowed_types = ['image/jpeg', 'image/png', 'image/gif']
+        if image.content_type not in allowed_types:
+            raise ValidationError('Image must be JPEG, PNG, or GIF format.')
+
+        # Optional: restrict file size (e.g., max 2MB)
+        max_size = 2 * 1024 * 1024  # 2MB
+        if image.size > max_size:
+            raise ValidationError('Image file size must be under 2MB.')
+
         return image
